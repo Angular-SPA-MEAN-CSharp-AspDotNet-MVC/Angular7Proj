@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { NgForm } from '@angular/forms';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
@@ -26,5 +25,16 @@ export class EmployeeComponent implements OnInit {
       Mobile:'',
       Position:''
     }
+  }
+
+  submitForm(form: NgForm){
+    this.updateForm(form);
+  }
+
+  updateForm(form: NgForm){
+    this.service.postData(form.value)
+      .subscribe(
+        res => this.resetForm(form)
+      );
   }
 }
