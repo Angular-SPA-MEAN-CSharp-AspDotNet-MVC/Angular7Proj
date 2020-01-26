@@ -1,8 +1,8 @@
-<table class="table">
+<table class="table table-hover">
     <tr *ngFor='let emp of service.list'>
-        <td>[{{emp.EMPCode}}]-{{emp.FullName}}</td>
-        <td>{{emp.Position}}</td>
-        <td>{{emp.Mobile}}</td>
-        <td class="btn btn-sm btn-outline-danger">X</td>
+        <td (click)="populateForm(emp)">[{{emp.EMPCode}}]-{{emp.FullName}}</td>
+        <td (click)="populateForm(emp)">{{emp.Position}}</td>
+        <td (click)="populateForm(emp)">{{emp.Mobile}}</td>
+        <td (click)="deleteRecord(emp)" class="btn btn-sm btn-outline-danger">X</td>
     </tr>
 </table>

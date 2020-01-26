@@ -28,9 +28,12 @@ export class EmployeeComponent implements OnInit {
       Position:''
     }
   }
-
+  
   submitForm(form: NgForm){
-    this.insertRecord(form);
+    if(form.value.EmployeeID===null)
+      this.insertRecord(form);
+    else
+      this.updateRecord(form);
   }
 
   insertRecord(form: NgForm){
@@ -39,5 +42,16 @@ export class EmployeeComponent implements OnInit {
         res => this.resetForm(form)
       );
       this.toastr.success("Insert Successfully", "Emp, Register");
-  }
+      this.service.reloadList();  
+    }
+  
+  updateRecord(form: NgForm){
+    this.service.putData(form.value)
+      .subscribe(        
+        res => this.resetForm(form)
+      );
+      this.toastr.warning("Update Successfully","Emp, Register");
+      this.service.reloadList();      
+    }
+
 }

@@ -17,9 +17,17 @@ export class EmployeeService {
     return this.http.post(this.baseURL + '/Employee', formValue);
   }
 
-  getList(){
+  putData(formValue: Employee){
+    return this.http.put(this.baseURL+'/Employee/'+ formValue.EmployeeID, formValue);
+  }
+
+  deleteData(fromValue: Employee){
+    return this.http.delete(this.baseURL+'/Employee/'+ fromValue.EmployeeID);
+  }
+
+  reloadList(){
     this.http.get(this.baseURL+'/Employee')
-      .subscribe(res => this.list = res as Employee[]);
+      .toPromise().then(res => this.list = res as Employee[]);
   }
 
 }
