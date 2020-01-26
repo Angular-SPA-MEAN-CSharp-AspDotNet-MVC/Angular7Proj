@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { NgForm } from '@angular/forms';
-import { TastrsService, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -30,14 +30,14 @@ export class EmployeeComponent implements OnInit {
   }
 
   submitForm(form: NgForm){
-    this.updateForm(form);
+    this.insertRecord(form);
   }
 
-  updateForm(form: NgForm){
+  insertRecord(form: NgForm){
     this.service.postData(form.value)
       .subscribe(
         res => this.resetForm(form)
       );
-      this.toastr.success("Save to the dB", "Emp, Register");
+      this.toastr.success("Insert Successfully", "Emp, Register");
   }
 }
