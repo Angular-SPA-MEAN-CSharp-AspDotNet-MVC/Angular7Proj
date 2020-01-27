@@ -39,19 +39,22 @@ export class EmployeeComponent implements OnInit {
   insertRecord(form: NgForm){
     this.service.postData(form.value)
       .subscribe(
-        res => this.resetForm(form)
+        res => {
+          this.resetForm(form);
+          this.service.reloadList(); 
+          this.toastr.success("Insert Successfully", "Emp, Register"); 
+        }
       );
-      this.toastr.success("Insert Successfully", "Emp, Register");
-      this.service.reloadList();  
     }
   
   updateRecord(form: NgForm){
     this.service.putData(form.value)
       .subscribe(        
-        res => this.resetForm(form)
-      );
-      this.toastr.warning("Update Successfully","Emp, Register");
-      this.service.reloadList();      
+        res => {
+          this.resetForm(form);
+          this.service.reloadList();
+          this.toastr.warning("Update Successfully","Emp, Register");
+        });
     }
 
 }

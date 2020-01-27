@@ -22,10 +22,14 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteRecord(form: Employee){
+    if(confirm("Are you sure to delete this record?")){
     this.service.deleteData(form)
-      .subscribe();  
-      this.toastr.warning("Delete an Employee","Emp, Register");  
-      this.service.reloadList();
+      .subscribe( res =>{
+        this.service.reloadList();
+        this.toastr.info("Delete an Employee  " + form.FullName,"Emp, Register");  
+      });  
+      
+    }
   }
 
 }
