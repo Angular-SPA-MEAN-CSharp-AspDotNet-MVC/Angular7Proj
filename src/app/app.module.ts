@@ -10,13 +10,15 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeeService } from './shared/employee.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
     EmployeeListComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
